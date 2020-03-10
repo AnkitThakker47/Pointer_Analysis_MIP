@@ -1,4 +1,5 @@
 import tabula
+import pandas as pd
 #import PyPDF2
 
 #pdfFileObj = open('FIRSTSEMMARKS.pdf', 'rb') 
@@ -8,9 +9,11 @@ import tabula
 
 name = "FIRSTSEMMARKS.pdf"
 tables = tabula.read_pdf(name,pages = "all",multiple_tables=True)
-print(tables)
-ankit = []
-ankit.append(tables)
+#ankit = []
+#ankit.append(tables)
+#print(tables)
+df = pd.DataFrame(tables)
+print(df)
 #print(len(ankit))
 #print(ankit[0][1])
 #for i in ankit[0]:
