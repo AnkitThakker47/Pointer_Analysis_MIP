@@ -1,6 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar 16 17:00:35 2020
+
+@author: Dell
+"""
+
 import pandas as pd
 import numpy as np
-df1=pd.read_csv('FSM.csv')
+df1=pd.read_csv('D:\COLLEGE SEM 4\Pointer Analysis\CalPoint\FSM.csv')
 
 #deleting extra rows
 df1=df1.drop(df1.index[0:3])
@@ -39,6 +46,19 @@ df1.rename( columns={'AM1-sc':'AM1'}, inplace=True )
 df1['AM1-tw']=df1['AM1-tw'].astype(str)
 df1['AM1-tw'] = df1['AM1-tw'].map(lambda x: str(x)[:-1])
 df1['AM1-tw'] = df1['AM1-tw'].astype(int)
+
+
+df1['ECL'] = df1['ECL'].astype(str)
+df1['ECL'] = df1['ECL'].map(lambda x: str(x)[:-1])
+"""
+df1['ECL-TW'], df1['ECL-O'] = df1['ECL'].str.split('. ', 1).str
+df1['ECL-TW'] = df1['ECL-TW'].astype(int)
+df1['ECL-O'] = df1['ECL-O'].astype(int)
+df1['ECL-sc']=df1['ECL-TW']+df1['ECL-O']
+df1=df1.drop(['ECL'],axis=1)
+df1=df1.drop(['ECL-TW'],axis=1)
+df1=df1.drop(['ECL-O'],axis=1)
+df1.rename( columns={'ECL-sc':'ECL'}, inplace=True )
 
 #EC
 df1['EC']=df1['EC'].astype(str)
@@ -158,3 +178,4 @@ df1['Pointer']=df1.apply(pointer,axis=1)
 df1['Pointer']=df1['Pointer'].round(2)
 
 #df1.to_csv('sem1.csv')
+"""
