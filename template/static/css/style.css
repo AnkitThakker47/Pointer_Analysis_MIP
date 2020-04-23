@@ -329,7 +329,15 @@ input:focus {
     position: relative;
     border-bottom: 2px solid #d9d9d9;
     padding-bottom: 13px;
-    margin-bottom: 27px;
+    margin-bottom: 10px;
+  }
+
+  .wrap-inputnew100 {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #cc0033;
+    padding-bottom: 13px;
+    margin-bottom: 10px;
   }
   
   .label-input100 {
@@ -359,23 +367,6 @@ input:focus {
     top: 0;
     left: 0;
     pointer-events: none;
-  }
-  
-  .focus-input100::before {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-  
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-  
-    background: #7f7f7f;
   }
   
   input.input100 {
