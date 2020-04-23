@@ -49,6 +49,20 @@ df1 = renamecol(df1,lc1)
 df2 = renamecol(df2,lc2)
 df3 = renamecol(df3, lc3)
 
+
+#function for removing sem from the roll no of candidate and / from name of girl candidate
+def changerollandname(df):
+    df['RollNo'] = df['RollNo'].astype(str)
+    df['RollNo'] = df['RollNo'].map(lambda x: str(x)[1:])
+    df['Name'] = df['Name'].astype(str)
+    df['Name'] = df['Name'].map(lambda x: str(x)[3:] if x[0] == '/' else str(x))
+    return df
+
+#function call for changing rollno and name of candidate
+df1 = changerollandname(df1)
+df2 = changerollandname(df2)
+df3 = changerollandname(df3)
+
 #function for converting string into int for respective columns
 def cstoint(df,lc):
     def calSumCol(x):
@@ -172,3 +186,7 @@ def pointer(df,ds):
 df1 = pointer(df1,ds1)
 df2 = pointer(df2,ds2)
 df3 = pointer(df3,ds3)
+
+#df1.to_csv('D:\COLLEGE SEM 4\Pointer Analysis\CalPoint\sem1.csv')
+#df2.to_csv('D:\COLLEGE SEM 4\Pointer Analysis\CalPoint\sem2.csv')
+#df3.to_csv('D:\COLLEGE SEM 4\Pointer Analysis\CalPoint\sem3.csv')

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>New-title-Score</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="static/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    
+    
+    <!-- Custom CSS -->
+    <link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+     <!-- Navigation -->
+     <a class="menu-toggle rounded" href="#">
+        <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="#page-top">Getting Started</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#page-top">Home</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#about">Check Scores</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#services">Peer Comparison</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#portfolio">Predict Scores</a>
+        </li>
+    </ul>
+    </nav>
+
+    <!--Header-->
+    <section class="content-section bg-warning">
+        <div class="container text-center text-dark">
+            <div class="content-section-heading">
+                <h1 style="font-size: 4rem;">Scores</h1>
+                <p class="lead mb-5">Analyze your progress in tests</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section bg-dark">
+        <div class="details">
+            <p>Name {{name}}
+            <br>Semester {{sem}}
+            <br>
+            <h2><em style="color: #1D809F;">Pointer</em>  {{pointer}}</h2>
+            </p>
+        </div>
+
+        <div class="container">
+        <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+            <div id="carouselExampleIndicators" class="carousel slide d-flex" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1" ></li>
+                    {% for c in count %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ c }}"></li>
+                    {% endfor %}
+                </ol>
+
+                <div class="carousel-inner" style=" width:100%; height: 535px !important; background-color:#f8f9fa;">
+                    <div class="carousel-item active">
+                        <div class="card">
+                            <div class="card-body text-center "><img class="card-img-top img-fluid" src="data:img/png;base64,{{ r2 }}">
+                            <div class="card-body">
+                                <h4 class="card-title" style="color:#ecb807">Pie Chart for pointer</h4>
+                                <p class="card-text" style="color:#155d74">Some quick example text to build on the card title and make up the bulk of the
+                                card's content.</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body text-center "><img class="card-img-top img-fluid" src="data:img/png;base64,{{ r1 }}">
+                            <div class="card-body">
+                                <h4 class="card-title" style="color:#ecb807">Student Progress</h4>
+                                <p class="card-text" style="color:#155d74">A pictorial representation of student scores for each course.</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                    {% for sc in scount %}
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body text-center "><img class="card-img-top img-fluid" src="data:img/png;base64,{{ ind_pie[sc] }}">
+                            <div class="card-body">
+                                <h4 class="card-title" style="color:#ecb807">Student Scores for {{ cr[sc] }}</h4>
+                                <p class="card-text" style="color:#155d74">Detailed analysis of students scores for course {{ cr[sc]  }} </p>
+                            </div>
+                            </div>
+                        </div>
+                     </div>
+                    {% endfor %}
+                </div>
+                
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="icon-arrow-left-circle" aria-hidden="true" style="color: black"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="icon-arrow-right-circle" aria-hidden="true" style="color: black"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="footer text-center">
+        <div class="container">
+          <p class="text-muted small mb-0">Copyright &copy; UpGrade 2020</p>
+        </div>
+    </footer>
+      
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="static/js/stylish-portfolio.min.js"></script>
+</body>
+</html>
