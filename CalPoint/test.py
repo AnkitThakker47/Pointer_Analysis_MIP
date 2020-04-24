@@ -170,7 +170,9 @@ def pointer(df,ds):
     tot_cred = 0
     for i in collist:
         df[i] = df[i].astype(float)
-        if i[-1] == 'L' or i == 'WP1' or i == 'WP2' or i == 'INDAP' or i == 'PROG':
+        if 'DDL' in i:
+            cred = cred + (df[i].apply(pcal,maxm=75)) * ds[i]
+        elif i[-1] == 'L' or i == 'WP1' or i == 'WP2' or i == 'INDAP' or i == 'PROG':
             cred = cred + (df[i].apply(pcal,maxm=50)) * ds[i]
         elif i[-1:-3:-1] == 'wt':
             cred = cred + (df[i].apply(pcal,maxm=25)) * ds[i]
