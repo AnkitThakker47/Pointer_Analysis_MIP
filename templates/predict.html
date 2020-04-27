@@ -9,6 +9,16 @@
     <meta name="author" content="">
 
     <title>Pointer Probe-Predict</title>
+    <style type="text/css">
+    .alertnorm{
+      color:red;
+      font-family: Helvetica;
+      color: #cc0033;
+      margin-bottom: 30px;
+      border: 0px;
+      padding: 0px;
+    }
+  </style>
 
     <!-- Bootstrap Core CSS -->
     <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -60,14 +70,14 @@
     <div class="content-section bg-gray">
         <div class="container-contact100">
             <div class="wrap-contact101">
-                <form class="contact100-form" action="{{ url_for('handle_predict') }}" method="post">
+                <form class="contact100-form" action="{{ url_for('handle_predict') }}" method="post" onsubmit="return validateForm()">
                     <span class="contact100-form-title">
                         Enter Details to Predict your Pointer
                     </span>
                         <div class="form-radio form-radio-inline">
                             <div class="form-radio-legend">What is your travelling time per day??</div>
                             <label class="form-radio-label">
-                                <input class="form-radio-field" type="radio" name="options" id="1" value="0" />
+                                <input class="form-radio-field" required="true" type="radio" name="options" id="1" value="0" />
                                 <i class="form-radio-button"></i>
                                 <span>Less than 1 hour</span>
                             </label><br>
@@ -82,26 +92,30 @@
                                 <span>More than 2 hours</span>
                             </label><br>
                         </div>
-                        <div class="wrap-input100">
+                        <div id="inp0" class="wrap-input100">
                             <span class="label-input100">How many hours do you study per day (roughly)?</span>
-                            <input class="input100" name="study_hrs" placeholder="Please enter a whole number">
+                            <input class="input100" oninput="validatevalue()" name="study_hrs" placeholder="Please enter a whole number">
                             <span class="focus-input100"></span>
                         </div>
-                        <div class="wrap-input100">
+                        <p class="alertnorm" id="para0"></p>
+                        <div id="inp1" class="wrap-input100">
                             <span class="label-input100">How much time  per day do you while away unproductively(ex. phone, tv etc..)? </span>
-                            <input class="input100" name="unprod" placeholder="Please enter a whole number">
+                            <input class="input100" oninput="validatevalue()" name="unprod" placeholder="Please enter a whole number">
                             <span class="focus-input100"></span>
                         </div>
-                        <div class="wrap-input100">
+                        <p class="alertnorm" id="para1"></p>
+                        <div id="inp2" class="wrap-input100">
                             <span class="label-input100">How much time do you sleep (in hours)? </span>
-                            <input class="input100" name="sleep" placeholder="Please enter a whole number">
+                            <input class="input100" oninput="validatevalue()" name="sleep" placeholder="Please enter a whole number">
                             <span class="focus-input100"></span>
                         </div>
-                        <div class="wrap-input100">
+                        <p class="alertnorm" id="para2"></p>
+                        <div id="inp3" class="wrap-input100">
                             <span class="label-input100">What percent of lectures do you attend in a semester?</span>
-                            <input class="input100" name="lect" placeholder="Please enter a whole number">
+                            <input class="input100" oninput="validatevalue()" name="lect" placeholder="Please enter a whole number">
                             <span class="focus-input100"></span>
                         </div>
+                        <p class="alertnorm" id="para3"></p>
                     <button class="btn btn-xl btn-primary" type="submit" >Get Result</button>
                 </form>
             </div>
@@ -126,7 +140,76 @@
 
     <!-- Custom scripts for this template -->
     <script src="static/js/stylish-portfolio.min.js"></script>
+    <script type="text/javascript">
+        var inputvalues = document.getElementsByTagName("input");
+        var arraycheck = [false,false,false,false],checkans = [0,0,0,0];
+        var minval = [0,1,2,1], maxval = [18,12,12,100]
 
+        function validatevalue(){
+            var vals = [], i = 0;
+            for(i = 0;i < inputvalues.length;i++){
+                if(inputvalues[i].type == 'text'){
+                    vals.push(inputvalues[i].value);
+                }
+            }    
+            for(i = 0;i < vals.length;i++){
+                    var temp = checkcondition(vals[i],minval[i], maxval[i], ("para"+i), checkans[i], ("inp"+i));
+                    arraycheck[i] = temp[0];
+                    checkans[i] = temp[1];
+            }
+
+        }
+
+
+
+        function checkcondition(valueEntered, minval, maxval, idnamepara, checkEntered, idnametag){
+            value = false;
+            //console.log('In function checkcondition')
+            if(!checkEntered){
+                if(minval <= parseInt(valueEntered) && parseInt(valueEntered) <= maxval){
+                    document.getElementById(idnametag).className = "wrap-input100";
+                    document.getElementById(idnamepara).innerHTML = "";value = true;
+                    checkEntered++;
+                }
+                if (valueEntered == ""){
+                    document.getElementById(idnametag).className = "wrap-input100";
+                    document.getElementById(idnamepara).innerHTML = "";value = false;
+                }
+            }
+            else{
+                if(minval <= parseInt(valueEntered) && parseInt(valueEntered) <= maxval){
+                    document.getElementById(idnametag).className = "wrap-input100";
+                    document.getElementById(idnamepara).innerHTML = "";value = true;
+                }
+                else{
+                    document.getElementById(idnametag).className = "wrap-inputnew100";
+                    document.getElementById(idnamepara).innerHTML = "Invalid Value *";value = false;   
+                }   
+                if(valueEntered == ""){
+                    document.getElementById(idnametag).className = "wrap-inputnew100";
+                    document.getElementById(idnamepara).innerHTML = "Value Required *";value = false;
+                }
+
+            }
+            return [value,checkEntered];
+        }
+
+
+        function validateForm(){
+            var i = 0, validationflag = true;
+            for(i = 0;i < arraycheck.length;i++){
+                if(arraycheck[i] === false){
+                    validationflag = false;
+                    break;
+                }
+            }
+            if(validationflag === false){
+                alert('Please make sure all values are entered right');
+            }
+            return validationflag;
+        }
+
+    </script>
 </body>
 
 </html>
