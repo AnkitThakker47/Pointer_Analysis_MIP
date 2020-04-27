@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pointer Probe-Results</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="static/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+        
+    <!-- Custom CSS -->
+    <link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <a class="menu-toggle rounded" href="#">
+        <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="#predict-res">Predict Results</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="/">Home</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="/">Check Scores</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="/">Peer Comparison</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="/predict">Predict Scores</a>
+        </li>
+    </ul>
+    </nav>
+
+    <section class="content-section bg-self" id="predict-res">
+        <div class="container text-center text-white">
+            <div class="content-section-heading">
+                <h1 style="font-size: 4rem;">Result</h1>
+                <p class="lead mb-5">Results for predicted pointer</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section bg-gray">
+        <div class="results">
+            <div class="container my-auto">
+            <h1 style="font-size: 3rem; color: #0056b3;">Result for Prediction of Pointer</h1>
+            <h3 class="mb-5">
+                Expcected pointer: {{ result }}
+            </h3>
+        </div>
+        <div style="padding-left: 9rem;">
+        <a class="btn btn-xl btn-dark" href="/predict" >Try Again</a>
+        </div>
+    </div>
+    </div>
+    <!--Footer-->
+    <footer class="footer text-center">
+        <p class="text-muted small mb-0">Copyright &copy; Pointer Probe 2020</p>
+      </footer>
+        
+      <a class="scroll-to-top rounded js-scroll-trigger" href="#predict-res">
+          <i class="fas fa-angle-up"></i>
+      </a>
+  
+      <script src="static/vendor/jquery/jquery.min.js"></script>
+      <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+      <!-- Plugin JavaScript -->
+      <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  
+      <!-- Custom scripts for this template -->
+      <script src="static/js/stylish-portfolio.min.js"></script>
+</body>
+</html>

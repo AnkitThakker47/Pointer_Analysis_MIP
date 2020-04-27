@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pointer Probe-Predict</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="static/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+        
+    <!-- Custom CSS -->
+    <link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <a class="menu-toggle rounded" href="#">
+        <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="#predict">Predict Scores</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="/">Home</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="/score">Check Scores</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="/peer">Peer Comparison</a>
+        </li>
+        <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#predict">Predict Scores</a>
+        </li>
+    </ul>
+    </nav>
+
+    <section class="content-section bg-self" id="#predict">
+        <div class="container text-center text-white">
+            <div class="content-section-heading">
+                <h1 style="font-size: 4rem;">Predict Scores</h1>
+                <p class="lead mb-5">Predict your scores next Semester</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-section bg-gray">
+        <div class="container-contact100">
+            <div class="wrap-contact101">
+                <form class="contact100-form" action="{{ url_for('handle_predict') }}" method="post">
+                    <span class="contact100-form-title">
+                        Enter Details to Predict your Pointer
+                    </span>
+                        <div class="form-radio form-radio-inline">
+                            <div class="form-radio-legend">What is your travelling time per day??</div>
+                            <label class="form-radio-label">
+                                <input class="form-radio-field" type="radio" name="options" id="1" value="0" />
+                                <i class="form-radio-button"></i>
+                                <span>Less than 1 hour</span>
+                            </label><br>
+                            <label class="form-radio-label">
+                                <input class="form-radio-field" type="radio" name="options" id="0" value="1" />
+                                <i class="form-radio-button"></i>
+                                <span>Between 1 and 2 hours</span>
+                            </label><br>
+                            <label class="form-radio-label">
+                                <input class="form-radio-field" type="radio" name="options" id="2" value="2"/>
+                                <i class="form-radio-button"></i>
+                                <span>More than 2 hours</span>
+                            </label><br>
+                        </div>
+                        <div class="wrap-input100">
+                            <span class="label-input100">How many hours do you study per day (roughly)?</span>
+                            <input class="input100" name="study_hrs" placeholder="Please enter a whole number">
+                            <span class="focus-input100"></span>
+                        </div>
+                        <div class="wrap-input100">
+                            <span class="label-input100">How much time  per day do you while away unproductively(ex. phone, tv etc..)? </span>
+                            <input class="input100" name="unprod" placeholder="Please enter a whole number">
+                            <span class="focus-input100"></span>
+                        </div>
+                        <div class="wrap-input100">
+                            <span class="label-input100">How much time do you sleep (in hours)? </span>
+                            <input class="input100" name="sleep" placeholder="Please enter a whole number">
+                            <span class="focus-input100"></span>
+                        </div>
+                        <div class="wrap-input100">
+                            <span class="label-input100">What percent of lectures do you attend in a semester?</span>
+                            <input class="input100" name="lect" placeholder="Please enter a whole number">
+                            <span class="focus-input100"></span>
+                        </div>
+                    <button class="btn btn-xl btn-primary" type="submit" >Get Result</button>
+                </form>
+            </div>
+        </div>
+    
+    </div>
+    
+    <!--Footer-->
+    <footer class="footer text-center">
+      <p class="text-muted small mb-0">Copyright &copy; Pointer Probe 2020</p>
+    </footer>
+      
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#predict">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="static/js/stylish-portfolio.min.js"></script>
+
+</body>
+
+</html>
