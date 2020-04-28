@@ -1,2 +1,2 @@
-# Pointer_Analysis_MIP
+# Pointer_Probe_
 Mini Project
